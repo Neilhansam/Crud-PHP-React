@@ -10,6 +10,5 @@ const Home = () => {
   });
 }
 
-const API = "http://localhost/Crud-PHP-React"/backend;
-useEffect(() => {})
+
 export default Home;
