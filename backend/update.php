@@ -1,8 +1,22 @@
 <?php
 include 'db.php';
 
-$id = $_GET['id'];
+if(isset($_POST['update'])){
+    $id = $_POST['id'];
+    $first = $_POST['first_name'];
+    $middle = $_POST['middle_name'];
+    $last = $_POST['last_name'];
 
-$result = $conn->query("SELECT * FROM users WHERE id=$id");
-$row = $result->fetch_assoc();
+    $sql = "UPDATE users SET 
+            first_name='$first',
+            middle_name='$middle',
+            last_name='$last'
+            WHERE id=$id";
+
+    if($conn->query($sql)){
+        header("Location: index.php");
+    } else {
+        echo "Error: " . $conn->error;
+    }
+}
 ?>
