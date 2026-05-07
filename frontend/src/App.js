@@ -110,6 +110,7 @@ const App = () => {
           </div>
         </div>
       </div>
+      <div className="table-container">
       <table>
         <thead>
           <tr>
@@ -143,6 +144,7 @@ const App = () => {
           )}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
