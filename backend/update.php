@@ -1,22 +1,12 @@
 <?php
 include 'db.php';
 
-if(isset($_POST['update'])){
-    $id = $_POST['id'];
-    $first = $_POST['first_name'];
-    $middle = $_POST['middle_name'];
-    $last = $_POST['last_name'];
+$data = json_decode(file_get_contents("php://input"));
+$sql = "UPDATE crud_system SET first_name='$data->first_name', middle_name='$data->middle_name', last_name='$data->last_name'
+ WHERE id='$data->id'";
 
-    $sql = "UPDATE users SET 
-            first_name='$first',
-            middle_name='$middle',
-            last_name='$last'
-            WHERE id=$id";
+$conn->query($sql);
 
-    if($conn->query($sql)){
-        header("Location: index.php");
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
+echo json_encode(["message" =>"User updated succesfully"]);
+
 ?>

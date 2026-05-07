@@ -1,11 +1,10 @@
 <?php
-require 'db.php';
-header("Content-Type: application/json");
+include 'db.php';
 
-$data = json_decode(file_get_contents("php://input"), true);
+$data = json_decode(file_get_contents("php://input"));
 
-$stmt = $pdo->prepare("DELETE FROM persons WHERE id=?");
-$stmt->execute([$data['id']]);
+$sql = "DELETE FROM crud_system WHERE id=$data->id";
+$conn->query($sql);
 
-echo json_encode(["message" => "Person deleted successfully"]);
+echo json_encode(["message" => "User deleted successfully"]);
 ?>
