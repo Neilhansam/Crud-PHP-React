@@ -1,9 +1,11 @@
 <?php
-require 'db.php';
-header("Content-Type: application/json");
 
-$stmt = $pdo->query("SELECT * FROM persons ORDER BY created_at DESC");
-$persons = $stmt->fetchAll(PDO::FETCH_ASSOC);
+include 'db.php';
 
-echo json_encode($persons);
+$result = $conn->query("SELECT * FROM crud_system");
+$data = array();
+while ($row = $result->fetch_assoc()){
+    $data[] = $row;
+}
+echo jscon_encode($data);
 ?>
