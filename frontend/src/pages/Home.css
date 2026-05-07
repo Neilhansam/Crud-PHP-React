@@ -4,6 +4,20 @@
     font-family: 'Inter', 'Poppins', 'Roboto', sans-serif;
 }
 
-.login {
-    padding: 20;
+.container{
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 100px;
+    justify-content: center;
+
+}
+
+table, td, th {
+  border: 1px solid;
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
 }
