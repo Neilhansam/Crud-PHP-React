@@ -139,7 +139,7 @@ const App = () => {
             ))
           ) : (
             <tr>
-              <td>No Users Found</td>
+              <td colSpan={5}>No Users Found</td>
             </tr>
           )}
         </tbody>
