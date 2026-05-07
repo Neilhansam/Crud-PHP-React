@@ -1,15 +1,15 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, OPTIONS *");
-header("Access-Control-Allow-Headers: Content-Type*");
-header("Content-Type: application/json");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 
 include 'db.php';
 
-$result = $conn->query("SELECT * FROM Crud-PHP-React");
+$result = $conn->query("SELECT * FROM user");
 $data = array();
 while ($row = $result->fetch_assoc()){
     $data[] = $row;
 }
-echo jscon_encode($data);
+echo json_encode($data);
 ?>
