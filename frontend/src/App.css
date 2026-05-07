@@ -61,7 +61,25 @@ h1 {
     gap: 4px;
 }
 
-.form-container button  {
+.btn-Save {
+ background-color: #F1E9E9;
+  color: rgb(0, 0, 0);
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  gap: 100px; 
+}
+.btn-Clear  {
+  background-color: #15173D;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  gap: 100px;
+}
+.btn-Clear:hover {
   background-color: #982598;
   color: white;
   padding: 14px;
@@ -70,6 +88,7 @@ h1 {
   border-radius: 4px;
   gap: 100px;
 }
+
 
 .button-group {
     display: flex;
@@ -115,19 +134,28 @@ button{
   cursor: pointer;
 }
 
+.btn-Delete:hover{
+  background-color: #982598;
+  color: white;
+ 
+}
+
 h1{
   text-align: center;
   color: #15173D;
 }
+
 
 table {
     width: 100%;
     max-width: 700px;
     border-collapse: collapse;
     margin-top: 8px;
+    margin: auto;
 }
 
 table th {
+  
     background-color: #15173D;
     color: #F1E9E9;
     padding: 12px 16px;
