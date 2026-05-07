@@ -97,10 +97,10 @@ const App = () => {
             Last Name:
             <input type="text" name="last_name" value={form.last_name} onChange={handleChange} />
           </label>
-          <button onClick={handleSubmit} disabled={!isFormValid}>
-            {form.id ? "Update" : "Save"}
-          </button>
-          <button className="btn delete" onClick={resetForm}>Clear</button>
+          <div className="button-group">
+          <button className="btn-Save" onClick={handleSubmit} disabled={!isFormValid}>{form.id ? "Update" : "Save"}</button>
+          <button className="btn-Clear" onClick={resetForm}>Clear</button>
+          </div>
         </div>
       </div>
       <table>
@@ -120,8 +120,10 @@ const App = () => {
                 <td>{user.middle_name}</td>
                 <td>{user.last_name}</td>
                 <td>
-                  <button className="btn Edit" onClick={() => handleEdit(user)}>Edit</button>
-                  <button className="btn Delete" onClick={() => handleDelete(user.id)}>Delete</button>
+                  <div className="action-group">
+                  <button className="btn-Edit" onClick={() => handleEdit(user)}>Edit</button>
+                  <button className="btn-Delete" onClick={() => handleDelete(user.id)}>Delete</button>
+                  </div>
                 </td>
               </tr>
             ))
