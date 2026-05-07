@@ -9,6 +9,7 @@ const App = () => {
     first_name: "",
     middle_name: "",
     last_name: "",
+    email: "",
   });
 
   const API = "http://localhost/Crud-PHP-React/backend/";
@@ -30,7 +31,7 @@ const App = () => {
 
   const handleSubmit = () => {
     
-    if (!form.first_name || !form.middle_name || !form.last_name) {
+    if (!form.first_name || !form.middle_name || !form.last_name || !form.email) {
       alert("Please fill out all the Forms");
       return;
     }
@@ -73,10 +74,11 @@ const App = () => {
       id: "", 
       first_name: "", 
       middle_name: "", 
-      last_name: "" });
+      last_name: "",
+      email: "" });
   };
 
-  const isFormValid = form.first_name && form.middle_name && form.last_name;
+  const isFormValid = form.first_name && form.middle_name && form.last_name && form.email;
 
   return (
     <div className="container">
@@ -97,6 +99,11 @@ const App = () => {
             Last Name:
             <input type="text" name="last_name" value={form.last_name} onChange={handleChange} />
           </label>
+          <br />
+           <label>
+            Email:
+            <input type="text" name="email" value={form.email} onChange={handleChange} />
+          </label>
           <div className="button-group">
           <button className="btn-Save" onClick={handleSubmit} disabled={!isFormValid}>{form.id ? "Update" : "Save"}</button>
           <button className="btn-Clear" onClick={resetForm}>Clear</button>
@@ -109,6 +116,7 @@ const App = () => {
             <th>First Name</th>
             <th>Middle Name</th>
             <th>Last Name</th>
+            <th>Email</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -119,6 +127,7 @@ const App = () => {
                 <td>{user.first_name}</td>
                 <td>{user.middle_name}</td>
                 <td>{user.last_name}</td>
+                <td>{user.email}</td>
                 <td>
                   <div className="action-group">
                   <button className="btn-Edit" onClick={() => handleEdit(user)}>Edit</button>
@@ -129,7 +138,7 @@ const App = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="4">No Users Found</td>
+              <td>No Users Found</td>
             </tr>
           )}
         </tbody>

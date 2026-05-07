@@ -7,9 +7,9 @@ include 'db.php';
 
 $data = json_decode(file_get_contents("php://input"));
 
-// ✅ FIX: Raw string interpolation → prepared statement (prevents SQL injection)
-$stmt = $conn->prepare("UPDATE user SET first_name=?, middle_name=?, last_name=? WHERE id=?");
-$stmt->bind_param("sssi", $data->first_name, $data->middle_name, $data->last_name, $data->id);
+
+$stmt = $conn->prepare("UPDATE user SET first_name=?, middle_name=?, last_name=? email=? WHERE id=?");
+$stmt->bind_param("ssssi", $data->first_name, $data->middle_name, $data->last_name, $data->email, $data->id);
 
 if ($stmt->execute()) {
     echo json_encode(["message" => "User updated successfully"]);
