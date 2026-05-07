@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS *");
+header("Access-Control-Allow-Headers: Content-Type*");
+
 include 'db.php';
 
 $data = json_decode(file_get_contents("php://input"));
@@ -16,7 +20,7 @@ if(
 }
 
 $stmt = $conn->prepare("INSERT INTO user(first_name, middle_name, last_name) VALUES(?,?,?) ");
-$stmt->bind_param("fml", $data->first_name, $data->middle_name, $data->last_name);
+$stmt->bind_param("sss", $data->first_name, $data->middle_name, $data->last_name);
 if ($stmt->execute()){
     echo json_decode(["message"=>"User inputted succesfully"]);
 
