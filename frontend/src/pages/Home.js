@@ -49,7 +49,8 @@ const Home = () => {
 
   const isFormValid = form.first_name && form.middle_name && form.last_name;
 
-  const API = "https://localhost/crud_system/backend"
+  const API = "https://localhost/Crud-PHP-React/backend";
+
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -80,7 +81,6 @@ const Home = () => {
           <button className="btn delete" onClick={resetForm}>Clear</button>
           </form>
         </div>
-
         <table>
           <thead>
             <tr>
@@ -89,7 +89,27 @@ const Home = () => {
               <th>Last Name</th>
             </tr>
           </thead>
+          <tbody>
+            {users.length >0 ? (
+              users.map(user =>(
+                <tr key={user.id}>
+                <td>{user.first_name}</td>
+                <td>{user.middle_name}</td>
+                <td>{user.last_name}</td>
+                <td>
+                  <button className="btn Edit" onClick={() => handleEdit(user)}>Edit</button>
+                  <button className="btn Delete" onClick={() => handleDelete(user.id)}>Delete</button>
+                </td>
+                </tr>
+              ))
+            ):(
+              <tr>
+                <td colSpan="5">No Users Found</td>
+              </tr>
+            )}
+          </tbody>
         </table>
+        
     </div>
 
 
