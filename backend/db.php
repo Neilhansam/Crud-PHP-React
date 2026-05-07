@@ -1,16 +1,12 @@
 <?php
 
-$servername = "localhost";
+$host     = "localhost";
+$db_name  = "crud_system";
 $username = "root";
-$password = ""; // Default XAMPP password is empty
-$dbname = "test_db";
+$password = "";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+$conn = new mysqli($host, $db_name, $username, $password);
+if(conn->connect_error){
+    die("connection failed:" . $conn->error);
 }
-echo "Connected successfully";
 ?>
