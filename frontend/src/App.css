@@ -42,7 +42,7 @@ h1 {
 
 }
 .form-container input{
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   padding: 12px;
   margin: auto;
@@ -146,7 +146,10 @@ h1{
 
 .table-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-x: scroll;
+  
 }
 
 table {
