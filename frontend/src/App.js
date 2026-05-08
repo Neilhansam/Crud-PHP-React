@@ -106,7 +106,7 @@ const App = () => {
           </label>
           <div className="button-group">
           <button className="btn-Save" onClick={handleSubmit} disabled={!isFormValid}>{form.id ? "Update" : "Save"}</button>
-          <button className="btn-Clear" onClick={resetForm}>Clear</button>
+          <button className="btn-Clear" onClick={resetForm} disabled={!isFormValid}>Clear</button>
           </div>
         </div>
       </div>
