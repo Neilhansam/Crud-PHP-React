@@ -4,6 +4,7 @@ import axios from "axios";
 
 const App = () => {
   const [users, setUserData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [form, setForm] = useState({
     id: "",
     first_name: "",
@@ -11,7 +12,7 @@ const App = () => {
     last_name: "",
     email: "",
   });
-
+  
   const API = "http://localhost/Crud-PHP-React/backend/";
 
   useEffect(() => {
@@ -80,36 +81,62 @@ const App = () => {
 
   const isFormValid = form.first_name && form.middle_name && form.last_name && form.email;
 
+  const handleSearch = (e) => {
+        e.preventDefault();
+        const lowerCaseSearchTerm = searchTerm.toLowerCase();
+    
+    };
+
+    const filteredItems = users.filter((user) => {
+      const lower = searchTerm.toLowerCase();
+      return (
+    user.first_name.toLowerCase().includes(lower) ||
+    user.middle_name.toLowerCase().includes(lower) ||
+    user.last_name.toLowerCase().includes(lower) ||
+    user.email.toLowerCase().includes(lower)
+  );
+    }
+    
+  );
+
   return (
     <div className="container">
       <h1>CRUD using PHP React System</h1>
-      <div className="form-container">
-        <div>
-          <label>
-            First Name:
-            <input type="text" name="first_name" value={form.first_name} onChange={handleChange} />
-          </label>
-          <br />
-          <label>
-            Middle Name:
-            <input type="text" name="middle_name" value={form.middle_name} onChange={handleChange} />
-          </label>
-          <br />
-          <label>
-            Last Name:
-            <input type="text" name="last_name" value={form.last_name} onChange={handleChange} />
-          </label>
-          <br />
-           <label>
-            Email:
-            <input type="text" name="email" value={form.email} onChange={handleChange} />
-          </label>
-          <div className="button-group">
-          <button className="btn-Save" onClick={handleSubmit} disabled={!isFormValid}>{form.id ? "Update" : "Save"}</button>
-          <button className="btn-Clear" onClick={resetForm} disabled={!isFormValid}>Clear</button>
+        <div className="form-container">
+          <div>
+            <label>
+              First Name:
+              <input type="text" name="first_name" value={form.first_name} onChange={handleChange} />
+            </label>
+            <br />
+            <label>
+              Middle Name:
+              <input type="text" name="middle_name" value={form.middle_name} onChange={handleChange} />
+            </label>
+            <br />
+            <label>
+              Last Name:
+              <input type="text" name="last_name" value={form.last_name} onChange={handleChange} />
+            </label>
+            <br />
+            <label>
+              Email:
+              <input type="text" name="email" value={form.email} onChange={handleChange} />
+            </label>
+            <div className="button-group">
+              <div className="search" onSubmit={handleSearch}> 
+                <input
+                    type="search"
+                    placeholder="Search"
+                    name="search"
+                    value={searchTerm} 
+                    onChange={(e) => setSearchTerm(e.target.value)} />
+                </div> 
+                <button className="btn-Save" onClick={handleSubmit} disabled={!isFormValid}>{form.id ? "Update" : "Save"}</button>
+                <button className="btn-Clear" onClick={resetForm} disabled={!isFormValid}>Clear</button>
+            </div>
           </div>
         </div>
-      </div>
       <div className="table-container">
       <table>
         <thead>
@@ -123,7 +150,7 @@ const App = () => {
         </thead>
         <tbody>
           {users.length > 0 ? (
-            users.map((user) => (
+            filteredItems.map((user) => (
               <tr key={user.id}>
                 <td>{user.first_name}</td>
                 <td>{user.middle_name}</td>
