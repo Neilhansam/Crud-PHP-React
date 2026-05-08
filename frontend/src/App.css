@@ -79,7 +79,9 @@ h1 {
   gap: 100px; 
 
 }
-.btn-Clear:hover {
+.btn-Clear:enabled:hover {
+  background-color: #982598;
+  color: white;
   padding: 14px;
   margin: 8px 0;
   border: none;
