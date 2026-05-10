@@ -20,10 +20,11 @@ Setup Instructions
 3.	Import the Database file
     3.1	Look for the crud_system.sql file in the backend folder 
     3.2	Open http://localhost/phpmyadmin or click the “Admin” button in the xampp control panel beside the MySQL
-    3.3	Look for Import button in the phpMyAdmin page
-    3.4	Click Choose File and then select the crud_system.sql file and then click Import
+    3.3	Click New and Create a new database then named it as “crud_system” to match the database name into the code
+  	3.4	Look for Import button
+    3.5	Click Choose File and then select the crud_system.sql file and then click Import
 
-4.	Install React
+5.	Install React
     4.1	Go to the Visual Studio Code
     4.2	Open the Folder Crud-PHP-React
     4.3	Look and find the frontend folder
